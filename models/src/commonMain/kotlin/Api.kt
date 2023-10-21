@@ -40,3 +40,42 @@ class ReminderOccurrences(
     val dates: List<Instant>,
     val occurrences: List<ReminderOccurrence>,
 )
+
+@Serializable
+data class WildReplyBody(
+    val message: String,
+    val conversation: String?,
+    val card: String,
+    val device: String
+)
+
+@Serializable
+data class ConversationItem(
+    var title: String = "",
+    var message: String = "",
+    var action: ConversationAction? = null,
+    var items: MutableList<ConversationItem> = mutableListOf(),
+)
+
+@Serializable
+data class CardOptions(
+    var enableReplies: Boolean? = null,
+    var enableAnonymousReplies: Boolean? = null
+)
+
+enum class ConversationAction {
+    Message
+}
+
+@Serializable
+data class ProfileStats(
+    val friendsCount: Int,
+    val cardCount: Int
+)
+
+@Serializable
+data class PersonProfile(
+    val person: Person,
+    val profile: Profile,
+    val stats: ProfileStats
+)
