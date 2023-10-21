@@ -8,12 +8,12 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
-    gradlePluginPortal()
 }
 
 kotlin {
     jvm {
         jvmToolchain(17)
+        useCompilerVersion(JavaVersion.VERSION_17.toString())
         withJava()
     }
     js {
@@ -36,7 +36,6 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-//                implementation("app.ailaai.shared:models")
                 implementation(project(":models"))
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.5.1")

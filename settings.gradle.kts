@@ -3,4 +3,4 @@ include(
     "push"
 )
 
-rootProject.name = "AiLaAi-Shared"
+rootProject.name = "ailaai-shared"

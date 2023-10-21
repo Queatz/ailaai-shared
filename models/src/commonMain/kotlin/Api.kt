@@ -79,3 +79,38 @@ data class PersonProfile(
     val profile: Profile,
     val stats: ProfileStats
 )
+
+@Serializable
+data class ExportDataResponse(
+    val profile: Profile? = null,
+    val cards: List<Card>? = null,
+    val stories: List<Story>? = null
+)
+
+@Serializable
+class MyDevice(
+    val type: DeviceType,
+    val token: String,
+)
+
+@Serializable
+data class VersionInfo(
+    val versionCode: Int,
+    val versionName: String
+)
+
+@Serializable
+data class SignUpRequest(
+    val code: String?
+)
+
+@Serializable
+data class SignInRequest(
+    val code: String? = null,
+    val link: String? = null
+)
+
+@Serializable
+data class TokenResponse (
+    val token: String
+)

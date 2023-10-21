@@ -9,7 +9,8 @@ actual open class Model {
     actual var createdAt: Instant? = null
 }
 
-@Serializable actual open class Edge : Model() {
+@Serializable
+actual open class Edge : Model() {
     actual var from: String? = null
     actual var to: String? = null
 }
