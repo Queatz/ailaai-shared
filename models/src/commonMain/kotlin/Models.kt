@@ -1,13 +1,7 @@
 package com.queatz.db
 
-import com.arangodb.serde.jackson.From
-import com.arangodb.serde.jackson.Key
-import com.arangodb.serde.jackson.To
-import com.fasterxml.jackson.annotation.JsonAlias
-import com.fasterxml.jackson.annotation.JsonProperty
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonNames
 
 @Serializable
 class Person(
@@ -288,27 +282,13 @@ enum class ReportType {
 }
 
 @Serializable
-open class Model {
-    @Key
-    @JsonNames("id", "_key")
-    @JsonProperty("_key")
-    @JsonAlias("id")
-    var id: String? = null
-
-    var createdAt: Instant? = null
+expect open class Model() {
+    var id: String?
+    var createdAt: Instant?
 }
 
 @Serializable
-open class Edge : Model() {
-    @From
-    @JsonNames("from", "_from")
-    @JsonProperty("_from")
-    @JsonAlias("from")
-    var from: String? = null
-
-    @To
-    @JsonNames("to", "_to")
-    @JsonProperty("_to")
-    @JsonAlias("to")
-    var to: String? = null
+expect open class Edge() : Model {
+    var from: String?
+    var to: String?
 }
