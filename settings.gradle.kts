@@ -1,6 +1,7 @@
 include(
     "models",
-    "push"
+    "push",
+    "api"
 )
 
 rootProject.name = "ailaai-shared"

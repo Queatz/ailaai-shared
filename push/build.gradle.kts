@@ -13,7 +13,6 @@ repositories {
 kotlin {
     jvm {
         jvmToolchain(17)
-        useCompilerVersion(JavaVersion.VERSION_17.toString())
         withJava()
     }
     js {
