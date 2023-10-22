@@ -10,6 +10,31 @@ enum class PushAction {
     Group
 }
 
+enum class GroupEvent {
+    Join,
+    Leave
+}
+
+enum class CollaborationEvent {
+    AddedPerson,
+    RemovedPerson,
+    AddedCard,
+    RemovedCard,
+    UpdatedCard,
+}
+
+enum class CollaborationEventDataDetails {
+    Photo,
+    Video,
+    Conversation,
+    Name,
+    Location,
+}
+
+enum class JoinRequestEvent {
+    Request
+}
+
 @Serializable
 data class PushData(
     val action: PushAction? = null,
@@ -35,6 +60,14 @@ data class CollaborationPushData(
 ) : PushDataData()
 
 @Serializable
+data class GroupPushData(
+    val person: Person,
+    val group: Group,
+    val event: GroupEvent,
+    val details: GroupEventData? = null
+) : PushDataData()
+
+@Serializable
 data class JoinRequestPushData(
     val person: Person,
     val group: Group,
@@ -49,22 +82,7 @@ data class CollaborationEventData (
     val details: CollaborationEventDataDetails? = null
 )
 
-enum class CollaborationEvent {
-    AddedPerson,
-    RemovedPerson,
-    AddedCard,
-    RemovedCard,
-    UpdatedCard,
-}
-
-enum class CollaborationEventDataDetails {
-    Photo,
-    Video,
-    Conversation,
-    Name,
-    Location,
-}
-
-enum class JoinRequestEvent {
-    Request
-}
+@Serializable
+data class GroupEventData (
+    val invitor: Person? = null
+)
