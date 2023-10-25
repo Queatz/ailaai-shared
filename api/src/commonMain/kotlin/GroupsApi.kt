@@ -37,13 +37,17 @@ suspend fun Api.exploreGroups(
     search: String? = null,
     public: Boolean = false,
     onError: ErrorBlock = null,
+    offset: Int = 0,
+    limit: Int = 100,
     onSuccess: SuccessBlock<List<GroupExtended>>,
 ) = get(
     url = "groups/explore",
     parameters = mapOf(
         "geo" to geo.toString(),
         "search" to search,
-        "public" to public.toString()
+        "public" to public.toString(),
+        "limit" to limit.toString(),
+        "offset" to offset.toString(),
     ),
     onError = onError,
     onSuccess = onSuccess
