@@ -41,7 +41,7 @@ abstract class Api {
     ) {
         try {
             onSuccess(post(url, body, progressCallback, client))
-        } catch (t: Exception) {
+        } catch (t: Throwable) {
             if (onError?.invoke(t) == null) {
                 showError(t)
             }
@@ -86,7 +86,7 @@ abstract class Api {
     ) {
         try {
             onSuccess(get(url, parameters, client))
-        } catch (t: Exception) {
+        } catch (t: Throwable) {
             if (onError?.invoke(t) == null) {
                 showError(t)
             }
