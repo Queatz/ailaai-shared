@@ -126,6 +126,8 @@ class Member(
     var hide: Boolean? = null,
     var gone: Boolean? = null,
     var host: Boolean? = null,
+    var snoozed: Boolean? = null,
+    var snoozedUntil: Instant? = null,
 ) : Edge()
 
 @Serializable
