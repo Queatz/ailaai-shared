@@ -39,7 +39,6 @@ enum class JoinRequestEvent {
 data class PushData(
     val action: PushAction? = null,
     val data: PushDataData? = null,
-    val show: Boolean? = null,
 )
 
 @Serializable
@@ -50,6 +49,7 @@ data class MessagePushData(
     val group: Group,
     val person: Person,
     val message: Message,
+    val show: Boolean? = null
 ) : PushDataData()
 
 @Serializable
