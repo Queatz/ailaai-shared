@@ -280,7 +280,6 @@ enum class ReportType {
     Spam,
     Other
 }
-
 @Serializable
 expect open class Model() {
     var id: String?

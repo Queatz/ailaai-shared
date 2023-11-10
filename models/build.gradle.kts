@@ -1,6 +1,6 @@
 plugins {
-    kotlin("multiplatform") version "1.9.10"
-    kotlin("plugin.serialization") version "1.9.10"
+    kotlin("multiplatform") version "1.9.20"
+    kotlin("plugin.serialization") version "1.9.20"
 }
 
 group = "app.ailaai.shared"
@@ -20,6 +20,9 @@ kotlin {
 
         }
     }
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
 //    val hostOs = System.getProperty("os.name")
 //    val isArm64 = System.getProperty("os.arch") == "aarch64"
 //    val isMingwX64 = hostOs.startsWith("Windows")
@@ -48,6 +51,7 @@ kotlin {
                 implementation("com.arangodb:jackson-serde-json:7.1.0")
             }
         }
+        val iosArm64Main by getting
         val jsMain by getting
 //        val nativeMain by getting
     }
