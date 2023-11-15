@@ -29,6 +29,7 @@ enum class CollaborationEventDataDetails {
     Conversation,
     Name,
     Location,
+    Content,
 }
 
 enum class JoinRequestEvent {

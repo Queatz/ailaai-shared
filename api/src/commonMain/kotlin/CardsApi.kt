@@ -2,7 +2,6 @@ package app.ailaai.api
 
 import com.queatz.db.*
 import io.ktor.client.request.forms.*
-import io.ktor.client.statement.*
 import io.ktor.http.*
 
 suspend fun Api.cards(
@@ -210,3 +209,58 @@ suspend fun Api.wildReply(
     onError = onError,
     onSuccess = onSuccess
 )
+
+
+suspend fun Api.uploadCardContentPhotos(
+    card: String,
+    media: List<ByteArray>,
+    onError: ErrorBlock = null,
+    onSuccess: SuccessBlock<List<String>>
+) {
+    return post(
+        "cards/$card/content/photos",
+        MultiPartFormDataContent(
+            formData {
+                media.forEachIndexed { index, photo ->
+                    append(
+                        "photo[$index]",
+                        photo,
+                        Headers.build {
+                            append(HttpHeaders.ContentType, "image/jpeg")
+                            append(HttpHeaders.ContentDisposition, "filename=photo.jpg")
+                        }
+                    )
+                }
+            }
+        ),
+        client = httpDataClient,
+        onError = onError,
+        onSuccess = onSuccess
+    )
+}
+
+suspend fun Api.uploadCardContentAudio(
+    card: String,
+    audio: InputProvider,
+    onError: ErrorBlock = null,
+    onSuccess: SuccessBlock<String>
+) {
+    return post(
+        "cards/$card/content/audio",
+        MultiPartFormDataContent(
+            formData {
+                append(
+                    "audio",
+                    audio,
+                    Headers.build {
+                        append(HttpHeaders.ContentType, "audio/mp4")
+                        append(HttpHeaders.ContentDisposition, "filename=audio.m4a")
+                    }
+                )
+            }
+        ),
+        client = httpDataClient,
+        onError = onError,
+        onSuccess = onSuccess
+    )
+}
