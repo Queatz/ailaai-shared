@@ -15,7 +15,8 @@ dependencyResolutionManagement {
 include(
     "models",
     "push",
-    "api"
+    "api",
+    "widgets"
 )
 
 rootProject.name = "ailaai-shared"

@@ -1,5 +1,6 @@
 package com.queatz.db
 
+import com.queatz.widgets.Widgets
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 
@@ -125,3 +126,6 @@ data class TokenResponse (
 
 @Serializable
 data class CreateGroupBody(val people: List<String>, val reuse: Boolean)
+
+@Serializable
+data class CreateWidgetBody(val widget: Widgets)

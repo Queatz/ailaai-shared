@@ -1,5 +1,6 @@
 package com.queatz.db
 
+import com.queatz.widgets.Widgets
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 
@@ -214,6 +215,13 @@ class ReminderOccurrence(
     var note: String? = null,
     var done: Boolean? = null,
     var gone: Boolean? = null,
+) : Model()
+
+@Serializable
+class Widget(
+    var person: String? = null,
+    var widget: Widgets? = null,
+    var data: String? = null
 ) : Model()
 
 @Serializable
