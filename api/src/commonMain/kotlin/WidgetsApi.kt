@@ -17,11 +17,24 @@ suspend fun Api.widget(
 
 suspend fun Api.createWidget(
     widget: Widgets,
+    data: String? = null,
     onError: ErrorBlock = null,
     onSuccess: SuccessBlock<Widget>
 ) = post(
     "widgets",
-    CreateWidgetBody(widget),
+    CreateWidgetBody(widget, data),
+    onError = onError,
+    onSuccess = onSuccess
+)
+
+suspend fun Api.updateWidget(
+    id: String,
+    widget: Widget,
+    onError: ErrorBlock = null,
+    onSuccess: SuccessBlock<Widget>
+) = post(
+    "widgets/$id",
+    widget,
     onError = onError,
     onSuccess = onSuccess
 )
