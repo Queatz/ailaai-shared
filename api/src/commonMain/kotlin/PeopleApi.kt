@@ -22,6 +22,13 @@ suspend fun Api.profileCards(
     onSuccess: SuccessBlock<List<Card>>,
 ) = get("people/$personId/profile/cards", onError = onError, onSuccess = onSuccess)
 
+suspend fun Api.activeCardsOfPerson(
+    personId: String,
+    search: String?,
+    onError: ErrorBlock = null,
+    onSuccess: SuccessBlock<List<Card>>,
+) = get("people/$personId/profile/cards", mapOf("search" to search), onError = onError, onSuccess = onSuccess)
+
 suspend fun Api.profileByUrl(
     url: String,
     onError: ErrorBlock = {},
