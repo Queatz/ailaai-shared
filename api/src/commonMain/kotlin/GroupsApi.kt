@@ -13,6 +13,13 @@ suspend fun Api.messages(
     onSuccess: SuccessBlock<List<Message>>,
 ) = get("groups/$group/messages", onError = onError, onSuccess = onSuccess)
 
+suspend fun Api.groupCards(
+    group: String,
+    onError: ErrorBlock = null,
+    onSuccess: SuccessBlock<List<Card>>,
+) = get("groups/$group/cards", onError = onError, onSuccess = onSuccess)
+
+
 suspend fun Api.messagesBefore(
     group: String,
     before: Instant,
