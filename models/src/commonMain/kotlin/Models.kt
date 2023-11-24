@@ -113,6 +113,7 @@ class Group(
     var name: String? = null,
     var seen: Instant? = null,
     var description: String? = null,
+    var categories: List<String>? = null,
     var open: Boolean? = null
 ) : Model()
 
