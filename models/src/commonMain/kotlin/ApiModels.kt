@@ -129,4 +129,7 @@ data class TokenResponse (
 data class CreateGroupBody(val people: List<String>, val reuse: Boolean)
 
 @Serializable
+data class SearchGroupBody(val people: List<String>)
+
+@Serializable
 data class CreateWidgetBody(val widget: Widgets, val data: String? = null)

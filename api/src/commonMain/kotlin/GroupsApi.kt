@@ -74,6 +74,13 @@ suspend fun Api.createGroup(
 ) =
     post("groups", CreateGroupBody(people.toSet().toList(), reuse), onError = onError, onSuccess = onSuccess)
 
+suspend fun Api.groupsWith(
+    people: List<String>,
+    onError: ErrorBlock = null,
+    onSuccess: SuccessBlock<List<GroupExtended>>,
+) =
+    post("groups/search", SearchGroupBody(people.toSet().toList()), onError = onError, onSuccess = onSuccess)
+
 suspend fun Api.updateGroup(
     id: String,
     groupUpdate: Group,
