@@ -104,6 +104,7 @@ class Card(
     var conversation: String? = null,
     var content: String? = null,
     var options: String? = null,
+    var pay: Pay? = null,
     var active: Boolean? = null,
     var cardCount: Int? = null
 ) : Model()
@@ -115,6 +116,27 @@ class Group(
     var description: String? = null,
     var categories: List<String>? = null,
     var open: Boolean? = null
+) : Model()
+
+enum class PayFrequency {
+    Hourly,
+    Daily,
+    Weekly,
+    Monthly,
+    Yearly
+}
+
+@Serializable
+data class Pay(
+    var pay: String? = null,
+    var frequency: PayFrequency? = null
+)
+
+@Serializable
+data class Item(
+    var name: String? = null,
+    var creator: String? = null,
+    var description: String? = null
 ) : Model()
 
 @Serializable

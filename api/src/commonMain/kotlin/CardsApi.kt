@@ -9,6 +9,7 @@ suspend fun Api.cards(
     offset: Int = 0,
     limit: Int = 20,
     search: String? = null,
+    paid: Boolean? = null,
     public: Boolean = false,
     onError: ErrorBlock = null,
     onSuccess: SuccessBlock<List<Card>>,
@@ -18,7 +19,8 @@ suspend fun Api.cards(
         "offset" to offset.toString(),
         "limit" to limit.toString(),
         "public" to public.toString(),
-        "search" to search
+        "search" to search,
+        "paid" to paid?.toString()
     ),
         onError = onError,
         onSuccess = onSuccess
